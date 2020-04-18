@@ -1,0 +1,24 @@
+'use strict';
+
+const { app, BrowserWindow } = require('electron');
+
+require ('electron-reload')(__dirname);
+
+function createWindow () {
+  // Create the browser window.
+  let win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+
+  // and load the index.html of the app.
+  win.loadFile('index.html')
+  
+  // Open the DevTools.
+  win.webContents.openDevTools()
+}
+
+app.whenReady().then(createWindow)
